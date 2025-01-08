@@ -20,11 +20,9 @@ export async function processImage(jobId, visits) {
                 const randomNumber = Math.floor(Math.random() * (4000 - 1000 + 1)) + 1000;
 
                 console.log(randomNumber);
-                // await new Promise((resolve) => {
                 setTimeout(() => {
                     //sleep
                 }, randomNumber);
-                // })
                 console.log("jooooo");
 
                 const imageId = uuid()

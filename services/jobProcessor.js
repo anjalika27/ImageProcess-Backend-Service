@@ -18,12 +18,4 @@ jobQueue.process(async({jobId,visits})=>{
     }
 })
 
-// Optional: Handle job completion
-jobQueue.on('completed', (job) => {
-    console.log(`Job ${job.id} completed!`);
-});
-
-jobQueue.on('failed', (job, err) => {
-    console.log(`Job ${job.id} failed: ${err.message}`);
-});
 
