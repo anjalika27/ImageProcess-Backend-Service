@@ -13,7 +13,6 @@ export async function submitJob(req, res) {
     // // Using sharp to get metadata
     // const metadata = await sharp(buffer).metadata();
     // return res.send(metadata);
-
     const { count, visits } = req.body;
     if (!count || !visits || count !== visits.length) {
         return res.status(400).json({
@@ -24,13 +23,12 @@ export async function submitJob(req, res) {
     try {
         const jobId = uuid();
         const data = await pool.query('insert into jobs values($1,$2,$3)', [jobId, 'Ongoing', new Date().toISOString()]);
-        await addJob(jobId, visits);
-        console.log('1');
-        
-        // const process=await processImage(jobId,visits);
-        console.log('2');
+        // await addJob(jobId, visits);
 
-        return res.status(201).json({
+        const process = await processImage(jobId, visits);
+        
+        return res.status(200).json({
+            process,
             jobId
         })
     } catch (error) {
@@ -54,6 +52,11 @@ export async function getJobStatus(req, res) {
             })
             else if (data.status === 'Failed') {
                 //something needs to be cooked
+                return res.status(200).json({
+                    status: "Failed",
+                    jobId,
+                    error: "job failed"
+                })
             }
             return res.status(200).json({
                 status: 'Ongoing',
