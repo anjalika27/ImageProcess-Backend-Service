@@ -1,3 +1,4 @@
+import { processImage } from "../helpers/processImage.js";
 import pool from "../model/db.js"
 import { addJob } from "../services/jobProcessor.js";
 
@@ -23,7 +24,12 @@ export async function submitJob(req, res) {
     try {
         const jobId = uuid();
         const data = await pool.query('insert into jobs values($1,$2,$3)', [jobId, 'Ongoing', new Date().toISOString()]);
-        await addJob(jobId, visits);
+        // await addJob(jobId, visits);
+        console.log('1');
+        
+        const process=await processImage(jobId,visits);
+        console.log('2');
+
         return res.status(201).json({
             jobId
         })

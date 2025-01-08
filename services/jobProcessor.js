@@ -1,5 +1,5 @@
 import Bull from "bull";
-import { processImage } from "../helpers/processImage";
+import { processImage } from "../helpers/processImage.js";
 
 const jobQueue=new Bull('jobQueue',{
     redis: { host: "127.0.0.1", port: 6379 },
