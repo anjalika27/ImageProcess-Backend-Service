@@ -6,8 +6,7 @@ const jobQueue=new Bull('jobQueue',{
 })
 
 export const addJob=async (jobId,visits)=>{
-    const job=await jobQueue.add({jobId,visits});
-    return;
+    await jobQueue.add({jobId,visits});
 }
 
 jobQueue.process(async({jobId,visits})=>{

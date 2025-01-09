@@ -51,7 +51,6 @@ export async function getJobStatus(req, res) {
                 jobId
             })
             else if (data.status === 'Failed') {
-                //something needs to be cooked
                 return res.status(200).json({
                     status: "Failed",
                     jobId,
