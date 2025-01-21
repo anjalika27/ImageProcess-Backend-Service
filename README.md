@@ -21,11 +21,11 @@
 
 ## Setup Project:
 - add .env file details:
-    - DB_USER
-    - DB_HOST,
-    - DB_DATABASE,
-    - DB_PASSWORD,
-    - DB_PORT,
+    - PG_USER
+    - PG_HOST
+    - PG_DATABASE
+    - PG_PASSWORD
+    - PG_PORT
 - git clone https://github.com/anjalika27/ImageProcess-Backend-Service.git
 - get into the right folder in which the project is cloned
 - npm i
